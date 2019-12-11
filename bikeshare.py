@@ -8,7 +8,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 
 
-MONTHS = ['all','January', 'february', 'march', 'april', 'may', 'june']
+MONTHS = ['all','january', 'february', 'march', 'april', 'may', 'june']
 
 
 
@@ -116,7 +116,7 @@ def time_stats(df):
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
-    print('\nCalculating The Most Popular Stations and Trips...\n')
+    print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
     # TO DO: display most commonly used start station
@@ -132,14 +132,14 @@ def station_stats(df):
     # TO DO: display most frequent combination of start station and end station trip
     # df['Start To End Combination'] = df['Start Station'] +''+ df['End Station']
     mostCommonStartEndCombination = str((df['Start Station'] +''+ df['End Station']).mode()[0])
-    print("\nMost combination of start station and end stations trip is : ",mostCommonStartEndCombination)
+    print("\nMost combination of start station and end station trip is : ",mostCommonStartEndCombination)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trips duration."""
+    """Displays statistics on the total and average trip duration."""
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -182,17 +182,32 @@ def user_stats(df):
         print("There exist no BirthYear (Nan)")
     else:      
         MostCommonYearOfBirth = df['Birth Year'].value_counts().idxmax()
-        print("\nThe most common year of birthyear is : ",MostCommonYearOfBirth)
+        print("\nThe most common year of birth is : ",MostCommonYearOfBirth)
         MostRecentYearOfBirth = df['Birth Year'].max()
-        print("\nThe most recent year of birthyear is : ",MostRecentYearOfBirth)
+        print("\nThe most recent year of birth is : ",MostRecentYearOfBirth)
         EarliestYearOfBirth = df['Birth Year'].min()
-        print("\nThe earliest year of birthyear is : ",EarliestYearOfBirth)
+        print("\nThe earliest year of birth is : ",EarliestYearOfBirth)
         
 
 
-    print("\nThis tooks %s seconds." % (time.time() - start_time))
+    print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-                
+
+def display_data(df):
+    start_point = 0
+    position = 5
+    display = input("Do you want to see the raw data? \nEnter (yes) or (no) ")
+    if display.lower() == 'yes':
+        while position <= df.shape[0] - 1:
+            print(df.iloc[start_loc:end_loc,:])
+            start_point=start_point+5
+            position=position+5
+            
+            displayEnd = input("If you want to stop enter (stop) otherwise enter (no): ")
+            if displayEnd.lower() == 'stop':
+                break
+            
+    
 def main():
     while True:
         city, month, day = get_filters()
