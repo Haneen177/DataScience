@@ -8,7 +8,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 
 
-MONTHS = ['all','January', 'february', 'march', 'april', 'may', 'june']
+MONTHS = ['all','January', 'February', 'March', 'April', 'May', 'June']
 
 
 
